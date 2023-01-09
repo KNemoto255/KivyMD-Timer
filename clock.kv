@@ -1,0 +1,54 @@
+<MyButton@MDRaisedButton>
+    font_name: 'OFont'
+
+
+<MyLabel@MDLabel>
+    halign: "center"
+    font_name: 'OFont'
+    markup: True
+    font_size: "60sp"
+
+
+
+<MainScreen>
+    time_label: time_label
+    md_bg_color: app.theme_cls.bg_normal
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {"center_x": .5}
+
+        MDTopAppBar:
+            title:"Clock & Timer"
+            #left_action_items: [["menu"]]
+            #right_action_items: [["settings"]]
+
+        MyLabel:
+            id: time_label
+            padding: dp(0),dp(50)
+
+            text: "00 : 00 : 00 %p"
+
+        MyLabel:
+            id: chrono_label
+            padding: dp(0),dp(50)
+
+            text: "00: 00.[size=30sp]00[/size]"
+
+
+        MDBottomAppBar:
+            MDTopAppBar:
+                id: bottomBar
+                title: "Stop & Restart Timer"
+                icon: "play"
+                icon_color: 0.3, 0.3, 0.7, 1
+                type: "bottom"
+
+                on_action_button: root.start_stop_chrono()
+                right_action_items: [["timer-sync", lambda x: root.reset_chrono()]]
+
+                #mode:"end"
+
+
+
